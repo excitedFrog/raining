@@ -7,8 +7,8 @@ import multiprocessing as mp
 
 from raining_universe import RainingUniverse
 
-RESULT_DIR = './wind_results0.6/'
-RESULT_PATH = sys.argv[1] if len(sys.argv) > 1 else '2'
+RESULT_DIR = './wind_results/'
+RESULT_PATH = sys.argv[1] if len(sys.argv) > 1 else '4'
 
 
 def parallel_worker(wind_speed, human_speed):
@@ -22,7 +22,7 @@ def parallel_worker(wind_speed, human_speed):
     return ru.wind_speed, ru.human_speed, ru.wetness
 
 
-WindSpeeds = np.linspace(-50, 50, 41)
+WindSpeeds = np.linspace(-100, 100, 41)
 HumanSpeeds = np.linspace(10, 100, 41)
 ArgList = list(product(*(WindSpeeds, HumanSpeeds)))
 with mp.Pool() as Pool:
